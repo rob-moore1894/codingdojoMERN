@@ -70,11 +70,6 @@ combineArrs = (arr1, arr2) => {
 combineArrs([1,3,5], [2,4,6])
 
 // Use the combineArrs() function above to construct mergeSortArr() for an unsorted array. What are the run-time and space complexities of your mergeSortArr solution?
-mergeSortArr = (arr) => {
-    if (arr.length <= 1){
-        return arr;
-    }
-}
 
 function merge (arr1, arr2) {
     let result = []
@@ -109,3 +104,37 @@ function supaSlice(arr){
 }
 
 console.log(supaSlice([5,3,4,2,2,5,1,3]))
+
+// Partition unsorted array in-place. Use arr[0] as pivot val; return idx of pivot. Input [5,4,9,2,5,3] becomes [4,2,3,5,9,5], return 4.
+
+function partitionArray(arr){
+    let p = arr[arr.length - 1];
+    var i = -1; 
+    for (let j = 0; j < arr.length; j++){
+        if (arr[j] <= p){
+            i++;
+            [arr[j], arr[i]] = [arr[i], arr[j]]; 
+        }
+        else {
+            continue; 
+        }
+    }
+    console.log(arr)
+    return p; 
+}
+console.log(partitionArray([5,4,9,2,5,3]))
+
+function partition(arr,p){
+    for (var j = 0, i = -1, piviot = arr[p]; j<arr.length; j++){
+        if (arr[j] <= piviot){
+            i++
+            [arr[j], arr[i]]= [arr[i], arr[j]];
+        }
+    }
+    [arr[p], arr[i]]= [arr[i], arr[p]];
+    console.log(arr);
+    return i;
+}
+
+var index = partition([5,4,9,2,5,3],0)
+console.log(index)
