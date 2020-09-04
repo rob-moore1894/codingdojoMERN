@@ -95,16 +95,6 @@ function merge (arr1, arr2) {
     return result
 }
 
-function supaSlice(arr){
-    if(arr.length <= 1) return arr
-    let mid = Math.floor(arr.length/2)
-    let left = supaSlice(arr.slice(0,mid))
-    let right = supaSlice(arr.slice(mid))
-    return merge(left, right)
-}
-
-console.log(supaSlice([5,3,4,2,2,5,1,3]))
-
 // Partition unsorted array in-place. Use arr[0] as pivot val; return idx of pivot. Input [5,4,9,2,5,3] becomes [4,2,3,5,9,5], return 4.
 
 function partitionArray(arr){
@@ -124,17 +114,42 @@ function partitionArray(arr){
 }
 console.log(partitionArray([5,4,9,2,5,3]))
 
-function partition(arr,p){
-    for (var j = 0, i = -1, piviot = arr[p]; j<arr.length; j++){
-        if (arr[j] <= piviot){
-            i++
-            [arr[j], arr[i]]= [arr[i], arr[j]];
+function swap(items, leftIndex, rightIndex){
+    var temp = items[leftIndex];
+    items[leftIndex] = items[rightIndex];
+    items[rightIndex] = temp;
+}
+
+function partition(items, left, right) {
+    var pivot = items[Math.floor((right + left) / 2)], 
+        i = left, 
+        j = right; 
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j); 
+            i++;
+            j--;
         }
     }
-    [arr[p], arr[i]]= [arr[i], arr[p]];
-    console.log(arr);
     return i;
 }
 
-var index = partition([5,4,9,2,5,3],0)
-console.log(index)
+function quickSort(items, left, right) {
+    var index;
+    if (items.length > 1) {
+        index = partition(items, left, right); 
+        if (left < index - 1) { 
+            quickSort(items, left, index - 1);
+        }
+        if (index < right) { 
+            quickSort(items, index, right);
+        }
+    }
+    return items;
+}
