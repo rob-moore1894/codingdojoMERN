@@ -153,3 +153,47 @@ function quickSort(items, left, right) {
     }
     return items;
 }
+
+// Given a string of words (with spaces, tabs and linefeeds), returns an array of words. Given "Life is not a drill!" return ["Life", "is" "not", "a", "drill!"].
+
+function strToArray(str){
+    return str.split(" ")
+}
+
+console.log(strToArray("Life is not a drill!"))
+
+// Create a function that, given a string of words (with spaces), returns new string with words in reverse sequence. Given "This is a test", return "test a is This".
+
+function reverseString(str){
+    return str.split(" ").reverse().join(" ")
+}
+
+console.log(reverseString("This is a test"))
+
+var testString = "life is not a drill!"
+
+function stringToArray(string){
+    newArr = [];
+    for(var i = 0, j = 0; i<string.length; i++){
+        if (string[i+1] == " " || i == string.length-1){
+            const word = string.slice(j,i+1);
+            newArr.push(word);
+            j = i+2; 
+        }
+    }
+    return newArr;
+}
+
+stringArr = stringToArray(testString);
+console.log(stringArr);
+
+function wordReverse(str) {
+    let word = stringToArray(str);
+    let reversed = "";
+    for (let i = word.length - 1; i >= 0; i--) {
+        reversed += word[i] + " ";
+    }
+    return reversed;
+}
+
+console.log(wordReverse(testString));
