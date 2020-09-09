@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import PersonCard from './components/personcard.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component{
   constructor(props){
