@@ -197,3 +197,32 @@ function wordReverse(str) {
 }
 
 console.log(wordReverse(testString));
+
+// Create a standalone function that accepts a string and an integer, and rotates the characters in the string to the right by that amount. Example: given ("Boris Godunov",5), you should return "dunovBoris Go".
+function rotate(str, int){
+    arr = str.split('')
+    for (let i = arr.length-1; i > arr.length-1-int; i--){
+        arr.unshift(arr.pop())
+    }
+    newStr = arr.join('')
+    console.log(newStr)
+    return newStr
+}
+
+rotate("Boris Godunov",5)
+
+// Create the function isRotation(str1,str2) that returns whether the second string is a rotation of the first. Would you change your implementation if you knew that the two were usually entirely unrelated?
+function isRotation(str1, str2){
+    if(str1.length == str2.length){
+        for(let i = 0; i < str1.length; i++){
+            let test = rotate(str1, i)
+            if (test == str2){
+                return true; 
+            }
+        }
+    }
+    return false;
+}
+
+console.log(isRotation("str1", "1str")); // true
+console.log(isRotation("str1", "str")); // false
