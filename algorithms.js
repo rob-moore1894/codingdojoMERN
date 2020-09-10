@@ -226,3 +226,30 @@ function isRotation(str1, str2){
 
 console.log(isRotation("str1", "1str")); // true
 console.log(isRotation("str1", "str")); // false
+
+// Remove duplicate characters (case-sensitive) including punctuation. Keep only the last instance of each character. Given "Snaps! crackles! pops!", return "Snrackle ops!".
+
+removeDup = (str) => {
+    var new_str = "";
+    var count = true;
+    for (var i = str.length-1; i >= 0; i--){
+        if (i == str.length-1){
+            new_str = str[i] + new_str;
+        }
+        else{
+            for (var j = 0; j < new_str.length; j++){
+                if (str[i] === new_str[j]){
+                    count = false;
+                }
+            }
+            if (count == true){
+                new_str = str[i] + new_str;
+            }
+            else{
+                count = true;
+            }
+        }
+    }
+    console.log(new_str);
+    return new_str
+}
