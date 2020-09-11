@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
+import Axios from 'axios'
 import './App.css';
 
 function App() {
 
   const [pokemon, setPokemon] = useState([])
 
-  const callPokemon = (e) => {
-    fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050")
-      .then(response => {
-        console.log("Successful Call")
-        return response.json()})
-      .then(response => {
-        console.log(response)
-        setPokemon(response.results)}) // .results comes from the object within the API JSON
-      .catch(error => {
-        console.log(error)})
+  const callPokemon = () => {
+    Axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1050")
+    .then(response => { setPokemon(response.data.results) })
+    .catch(err => { console.log(err) })
 }
 
   return (
@@ -24,7 +19,7 @@ function App() {
         pokemon.map((poke, i) => {
           return ( 
           <ul>
-            <li key={i}>{poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}</li>
+            <li key={i} >{poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}</li>
           </ul>
           )
         })
