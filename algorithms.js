@@ -253,3 +253,51 @@ removeDup = (str) => {
     console.log(new_str);
     return new_str
 }
+
+// You are given a string that may contain sequences of consecutive characters. Create a function to shorten a string by including the character, then the number of times it appears. For "aaaabbcddd", return "a4b2c1d3". If result is not shorter (such as "bb"=>"b2"), return the original string.
+
+function stringEncode(str){
+    var result = str.charAt(0);
+    var count = 1; 
+    if (str.length == 1){
+        result += count; 
+        return result; 
+    } else {
+        for(var i = 1; i < str.length; i++){
+            if(str.charAt(i) != str.charAt(i-1)){
+                result += count + str.charAt(i);
+                count = 1
+            } else {
+                count++
+            }
+            if (i == str.length - 1) {
+                result += count; 
+            }
+        }
+        return result; 
+    }
+}
+
+console.log(stringEncode("aaaabbcddd"))
+
+// Given an encoded string (see above), decode and return it. Given "a3b2c1d3", return "aaabbcddd".
+
+function stringDecode(str){
+    let encoded = str.split('')
+    let decodedArr = []
+
+    for (let i = 0; i < encoded.length; i++){
+        if(isNaN(encoded[i])){
+            continue; 
+        } else {
+            let repeater = encoded[i]
+            for (let j = 0; j < repeater; j++){
+                decodedArr.push(encoded[i-1])
+            }
+        }
+    }
+    var decoded = decodedArr.join('')
+    console.log(decoded)
+}
+
+stringDecode("a3b2c1d3")
