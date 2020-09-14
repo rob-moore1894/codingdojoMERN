@@ -301,3 +301,32 @@ function stringDecode(str){
 }
 
 stringDecode("a3b2c1d3")
+
+const dateString = () => {
+    let today = new Date();
+    if(today.toDateString() == "Sat Sep 12 2020"){
+        console.log("Happy Programmers' Day!")
+    }
+}
+
+dateString()
+
+// Efficiently combine two sorted arrays into an array containing the sorted multiset intersection of the two. Example: given [1,2,2,2,7] and [2,2,6,6,7], return [2,2,7].
+
+const intersectArrays = (arr1, arr2) => {
+    let newArray = [];
+    for (let i = 0; i < arr1.length; i++){
+        if(arr2.indexOf(arr1[i]) !== -1){
+            newArray.push(arr1[i])
+        }
+    } 
+    return newArray; 
+}
+
+console.log(intersectArrays([1,2,2,2,7], [2,2,6,6,7]))
+
+let arr1 = [1,2,2,2,7]
+let arr2 = [2,2,6,6,7]
+
+let intersection = arr1.filter(x => arr2.includes(x)); 
+console.log(intersection)
