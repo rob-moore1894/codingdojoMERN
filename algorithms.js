@@ -353,3 +353,4 @@ const unionArrays = (arr1, arr2) => {
 }
 
 unionArrays([1,2,2,2,7], [2,2,6,6,7])
+
