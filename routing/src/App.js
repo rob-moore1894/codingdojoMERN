@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { Router, Link } from '@reach/router';
 import HomeComponent from './components/HomeComponent';
 import IntegerComponent from './components/IntegerComponent';
 import WordComponent from './components/WordComponent';
