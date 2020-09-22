@@ -354,3 +354,19 @@ const unionArrays = (arr1, arr2) => {
 
 unionArrays([1,2,2,2,7], [2,2,6,6,7])
 
+// Create a function dec2BinStr(value) that converts a number into a string representing that number in binary notation. For this challenge, do not use the (very convenient) toString function. For example, given the value 35, the function should return "0b100011".
+
+const dec2BinStr = (value) => {
+    let bin = 0;
+    let rem, i = 1, step =1;
+    while (value != 0) {
+        rem = value % 2; 
+        console.log(`Step ${step++}: ${value}/2, Remainder = ${rem}, Quotient = ${parseInt(value/2)}`)
+        value = parseInt(value / 2);
+        bin = bin + rem * i;
+        i = i * 10;
+    }
+    console.log(`Binary: ${bin}`);
+}
+
+dec2BinStr(35)
