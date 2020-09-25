@@ -370,3 +370,21 @@ const dec2BinStr = (value) => {
 }
 
 dec2BinStr(35)
+
+// Create a function dec2HexStr(value) that converts a number into a string representing that number in hexadecimal notation. For this challenge, do not use the (very convenient) toString function. For example, given the value 108, the function should return "0x6C".
+
+const dec2HexStr = (value) => {
+    var hexObj = { 10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F' };
+    var result = [];
+    while (value > 0) {
+        result.push(value % 16);
+        console.log(result)
+        value = Math.floor(value / 16);
+    }
+    result = result.reverse();
+    result = result.map(val => val >= 10 ? hexObj[val] : val);
+    var hex = result.join('');
+    console.log("Hexadecimal number: 0x" + hex);
+}
+
+dec2HexStr(125)
