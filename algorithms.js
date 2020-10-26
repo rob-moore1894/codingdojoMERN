@@ -35,6 +35,26 @@ function bubbleSort2(arr) {
 console.log("Bubble Sort 2")
 console.log(bubbleSort2([3,2,4,1,5,6,7,8]))
 
+function selectionSort(arr){
+    for (let i = 0; i < arr.length; i++){
+        let min = i;
+        for (let j = i + 1; j < arr.length; j++){
+            if (arr[min] > arr[j]){
+                min = j;
+            }
+        }
+        if (min !== i){
+            let tmp = arr[i]
+            arr[i] = arr[min]
+            arr[min] = tmp
+        }
+    }
+    return arr; 
+}
+
+console.log("Selection Sort");
+console.log(selectionSort([3,2,4,1,5,6,7,8]))
+
 // Create a function that InsertionSort to sort an unsorted array in-place. What is the run-time complexity? What is the space complexity?
 
 function insertionSort(arr){
