@@ -57,7 +57,16 @@ console.log(selectionSort([3,2,4,1,5,6,7,8]))
 
 // Create a function that InsertionSort to sort an unsorted array in-place. What is the run-time complexity? What is the space complexity?
 
+function randomArray(length, max){
+    var arr = []
+    for(let i = 0; i < length; i++){
+        arr.push(Math.floor(Math.random() * Math.floor(max))) 
+    }
+    return arr; 
+}
+
 function insertionSort(arr){
+    console.log("Starting array: " + arr);
     for(let i = 1; i < arr.length; i++){
         let temp = arr[i]
         for(j = i-1; j >= 0 && arr[j] > temp; j--){
@@ -65,12 +74,12 @@ function insertionSort(arr){
         }
         arr[j+1] = temp;
     }
-    console.log(arr);
+    console.log("Sorted array: " + arr);
     return arr;
 }
 
 console.log("Insertion Sort")
-insertionSort([3,2,4,1,5,6,7,8])
+insertionSort(randomArray(5, 10))
 
 // Create function combineArrs(arr1,arr2) that sorts two already separately sorted arrays, placing the result back into the first provided array. Can you work completely in-place?
 combineArrs = (arr1, arr2) => {
