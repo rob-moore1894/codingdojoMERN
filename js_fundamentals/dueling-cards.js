@@ -21,6 +21,9 @@ class Units extends Cards{
         if (target instanceof Units){
             console.log(`${this.name} attacks ${target.name}`)
             target.res -= this.power;
+            if(target.res <= 0){
+                target.res = 0;
+            }
             console.table(target) 
         } else {
             console.log("You must attack a Unit!")

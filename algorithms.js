@@ -57,13 +57,6 @@ console.log(selectionSort([3,2,4,1,5,6,7,8]))
 
 // Create a function that InsertionSort to sort an unsorted array in-place. What is the run-time complexity? What is the space complexity?
 
-function randomArray(length, max){
-    var arr = []
-    for(let i = 0; i < length; i++){
-        arr.push(Math.floor(Math.random() * Math.floor(max))) 
-    }
-    return arr; 
-}
 
 function insertionSort(arr){
     console.log("Starting array: " + arr);
@@ -81,7 +74,14 @@ function insertionSort(arr){
 console.log("Insertion Sort")
 insertionSort(randomArray(5, 10))
 
-// Create function combineArrs(arr1,arr2) that sorts two already separately sorted arrays, placing the result back into the first provided array. Can you work completely in-place?
+function randomArray(length, max){
+    var arr = []
+    for(let i = 0; i < length; i++){
+        arr.push(Math.floor(Math.random() * Math.floor(max))) 
+    }
+    return arr; 
+}
+// Create function combineArrs(arr1,arr2) that sorts two already separately sorted arrays, placing the result back into the first provided array.
 combineArrs = (arr1, arr2) => {
     let mergedArr = [];
 
@@ -90,39 +90,25 @@ combineArrs = (arr1, arr2) => {
         arr1[0] < arr2[0] ? mergedArr.push(arr1.shift()) : mergedArr.push(arr2.shift())
         console.log(mergedArr)
     }
-    console.log(mergedArr)
-    mergedArr.concat(arr1.slice().concat(arr2.slice()));
-    console.log(mergedArr)
-    return mergedArr
+    return mergedArr.concat(arr1.slice().concat(arr2.slice()));
 }
 
-combineArrs([1,3,5], [2,4,6])
+// console.log(combineArrs([2, 5, 10, 57], [9, 12, 13]));
 
-// Use the combineArrs() function above to construct mergeSortArr() for an unsorted array. What are the run-time and space complexities of your mergeSortArr solution?
+// Use the combineArrs() function above to construct mergeSortArr() for an unsorted array.
 
-function merge (arr1, arr2) {
-    let result = []
-    let i = 0 
-    let j = 0
-    while(i < arr1.length && j < arr2.length) {
-        if(arr1[i] > arr2[j]) {
-            result.push(arr2[j])
-            j++
-        } else {
-            result.push(arr1[i])
-            i++
-        }
+function mergeSortArr (arr) {
+    if (arr.length <= 1){
+        return arr;
     }
-    while(i < arr1.length){
-        result.push(arr1[i])
-        i++
-    }
-    while(j < arr2.length){
-        result.push(arr2[j])
-        j++
-    }
-    return result
+    let mid = Math.floor(arr.length / 2),
+    left = mergeSortArr(arr.slice(0, mid)),
+    right = mergeSortArr(arr.slice(mid)); 
+
+    return combineArrs(left, right); 
 }
+
+console.log(mergeSortArr(randomArray(9, 11)))
 
 // Partition unsorted array in-place. Use arr[0] as pivot val; return idx of pivot. Input [5,4,9,2,5,3] becomes [4,2,3,5,9,5], return 4.
 
@@ -328,17 +314,6 @@ function stringDecode(str){
     var decoded = decodedArr.join('')
     console.log(decoded)
 }
-
-stringDecode("a3b2c1d3")
-
-const dateString = () => {
-    let today = new Date();
-    if(today.toDateString() == "Sat Sep 12 2020"){
-        console.log("Happy Programmers' Day!")
-    }
-}
-
-dateString()
 
 // Efficiently combine two sorted arrays into an array containing the sorted multiset intersection of the two. Example: given [1,2,2,2,7] and [2,2,6,6,7], return [2,2,7].
 
