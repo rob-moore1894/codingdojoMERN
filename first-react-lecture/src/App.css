@@ -1,3 +1,13 @@
+.container {
+  width: 80%;
+  margin: 0 auto; 
+  text-align: center;
+}
+
+#to-do {
+  list-style-type: none;
+}
+
 .App {
   text-align: center;
 }
