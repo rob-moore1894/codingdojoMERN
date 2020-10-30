@@ -1,33 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class PersonCard extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            age: props.age
-        }
-    }
-    render(){
-        return(
-            <div className="container p-2">
-                <table className="table table-bordered">
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                        <th>Hair Color</th>
-                    </tr>
-                    <tr>
-                        <td>{this.props.firstName}</td>
-                        <td>{this.props.lastName}</td>
-                        <td>{this.state.age}</td> {/* changed from props to state as defined above*/}
-                        <td>{this.props.hairColor}</td>
-                    </tr>
-                </table>
-                <button onClick = { () => this.setState({age: this.state.age + 1})} className = "mb-2">{this.props.firstName} {this.props.lastName}'s Birthday Button</button>
-            </div>
-        )
-    }
+// Refactored to functional component
+// - Changed 'class' to 'const' and created a function
+// - Removed constructor, destructured props, created an array for age and setAge
+// - Removed render()
+const PersonCard = (props) => {
+    const {firstName, lastName, age, hairColor} = props;
+
+    return(
+        <div className="container p-2">
+            <table className="table table-bordered">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Hair Color</th>
+                </tr>
+                <tr>
+                    <td>{firstName}</td>
+                    <td>{lastName}</td>
+                    <td>{age}</td>
+                    <td>{hairColor}</td>
+                </tr>
+            </table>
+            
+        </div>
+    )
 }
+
 
 export default PersonCard; 
