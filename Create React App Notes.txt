@@ -1,0 +1,14 @@
+React Notes:
+
+Terminal - 
+npx create-react-app project-name
+
+cd project-name
+
+//Install Bootstrap
+npm install react-bootstrap bootstrap
+
+//Copy and paste into index.js
+import 'bootstrap/dist/css/bootstrap.css';
+
+//
