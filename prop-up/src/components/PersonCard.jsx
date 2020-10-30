@@ -5,7 +5,12 @@ import React, { useState } from "react";
 // - Removed constructor, destructured props, created an array for age and setAge
 // - Removed render()
 const PersonCard = (props) => {
-    const {firstName, lastName, age, hairColor} = props;
+    const {firstName, lastName, hairColor} = props;
+    const [age, setAge] = useState(props.age); 
+
+    const increaseAge = () => {
+        setAge(age + 1);
+    }
 
     return(
         <div className="container p-2">
@@ -19,11 +24,11 @@ const PersonCard = (props) => {
                 <tr>
                     <td>{firstName}</td>
                     <td>{lastName}</td>
-                    <td>{age}</td>
+                    <td>{age}</td> 
                     <td>{hairColor}</td>
                 </tr>
             </table>
-            
+            <button onClick = {increaseAge} className = "mb-2">{firstName} {lastName}'s Birthday Button</button>
         </div>
     )
 }
