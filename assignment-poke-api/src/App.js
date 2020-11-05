@@ -1,13 +1,13 @@
 import './App.css';
 import {useState} from 'react'; 
+import Axios from 'axios';
 
 function App() {
   const [pokemon, setPokemon] = useState([])
 
   const fetchPokemon = (e) => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=1050")
-        .then(response => response.json())
-        .then(response => setPokemon(response.results))
+    Axios.get("https://pokeapi.co/api/v2/pokemon?limit=1050")
+        .then(response => setPokemon(response.data.results))
     }
 
   return (
@@ -30,7 +30,7 @@ function App() {
               return(
               <tr>
                 <td>{i+1}</td>
-                <td>{poke.name}</td>
+                <td>{poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}</td>
               </tr>
               )
             })
