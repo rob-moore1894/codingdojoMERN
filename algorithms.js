@@ -315,8 +315,32 @@ function stringDecode(str){
     console.log(decoded)
 }
 
-// Efficiently combine two sorted arrays into an array containing the sorted multiset intersection of the two. Example: given [1,2,2,2,7] and [2,2,6,6,7], return [2,2,7].
+//IsPangram
+//Definition: A pangram is a sentence that uses every letter in the alphabet
+//Given a string, return true if the sentence is a pangram, false if not
 
+//Ex: The quick brown fox jumps over the lazy dog
+//Ex: When zombies arrive, quickly fax judge Pat
+//Ex: The five boxing wizards jump quickly
+//Ex: My girl wove six dozen plaid jackets before she quit
+const isPangram = (str) => {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    str = str.toLowerCase().replace(/\s/g, ""); 
+    console.log(str)
+
+    for(let i = 0; i < alphabet.length; i++)
+        if(str.indexOf(alphabet[i]) === -1){
+            console.log("Not a Pangram")
+            return false; 
+        }
+    console.log("Pangram")
+    return true;    
+}
+
+console.log(isPangram("My girl wove six dozen plaid jackets before she quit"));
+console.log(isPangram("Young Bucks vs FTR")); 
+
+// Efficiently combine two sorted arrays into an array containing the sorted multiset intersection of the two. Example: given [1,2,2,2,7] and [2,2,6,6,7], return [2,2,7].
 const intersectArrays = (arr1, arr2) => {
     let newArray = [];
     for (let i = 0; i < arr1.length; i++){
