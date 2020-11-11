@@ -19,3 +19,11 @@ import axios from 'axios';
 
 // Install and import Reach Router
 npm install @reach/router
+
+// Install Express
+npm i express
+
+// Install Faker
+npm install Faker
+
+// Import Express and Faker to server.js
