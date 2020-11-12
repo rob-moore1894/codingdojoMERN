@@ -27,3 +27,14 @@ npm i express
 npm install Faker
 
 // Import Express and Faker to server.js
+const express = require("express"); 
+const faker = require("faker");
+const app = express();
+const port = 8000; 
+
+// Install MongoDB
+- installed from MongoDB website
+- open a terminal and run cd c:/"Program Files"/MongoDB/Server/<version_number>/bin/
+- As of 11/11/20 - running version number 4.4
+cd c:/"Program Files"/MongoDB/Server/4.4/bin/
+mongo.exe or ./mongo.exe
