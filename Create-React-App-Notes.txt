@@ -38,3 +38,12 @@ const port = 8000;
 - As of 11/11/20 - running version number 4.4
 cd c:/"Program Files"/MongoDB/Server/4.4/bin/
 mongo.exe or ./mongo.exe
+
+// Create Backend-
+- Create a new project folder
+- Create a new server folder
+- Within server => Create config, controllers, models, routes folders and server.js file
+- In terminal: 
+        npm init -y
+        npm install mongoose express cors 
+- Create a mongoose.config.js file and setup your mongoose.connect function
