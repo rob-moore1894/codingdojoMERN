@@ -14,9 +14,10 @@ module.exports.createProduct = (req, res) => {
         .catch(err => res.json({message: "Something went wrong!", error: err}))
 }; 
 
-// DELETE a product
-module.exports.deleteProduct = (req, res) => {
-    Product.remove({_id: req.params._id})
-        .then(res.json({message: "Product deleted!"}))
+// GET one product
+module.exports.findOneProduct = (req, res) => {
+    console.log(`Getting ID: ${req.params._id}`);
+    Product.findOne({_id: req.params._id})
+        .then(singleProduct => res.json({product: singleProduct}))
         .catch(err => res.json({message: "Something went wrong!", error: err}))
 }
