@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from '../components/Form';
+import DeletButton from '../components/DeleteButton';
+import DeleteButton from '../components/DeleteButton';
 
 const Main = (props) => {
     const [form, setForm] = useState({
@@ -60,7 +62,7 @@ const Main = (props) => {
                             <li key={i} className="m-2">
                                 <a href={`/products/${product._id}`}>{product.title}</a>
                                 &nbsp;
-                                <button className="btn btn-danger" onClick={() => deleteOne(product._id)}>Delete</button>
+                                <DeleteButton delete={() => deleteOne(product._id)}/>
                             </li>
                         )
                     })
