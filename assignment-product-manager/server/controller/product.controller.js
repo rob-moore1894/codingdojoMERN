@@ -21,3 +21,26 @@ module.exports.findOneProduct = (req, res) => {
         .then(singleProduct => res.json({product: singleProduct}))
         .catch(err => res.json({message: "Something went wrong!", error: err}))
 }
+
+// UPDATE a product
+module.exports.updateProduct = (req, res) => {
+    Product.update({_id: req.params._id}, {
+        $set: {
+            title: req.body.title,
+            price: req.body.price,
+            description: req.body.description
+        }
+    })
+    .then(product => res.json(product))
+    .catch(err => res.json({message: "Something went wrong while updating!", error: err}))
+}
+
+// DELETE a product
+module.exports.deleteProduct = (req, res) => {
+    Product.remove({_id: req.params._id})
+        .then(product => {
+            console.log(product);
+            res.json({message: "DELETE! DELETE! DELETE!"})
+        })
+        .catch(err => res.json({message: "Kicked out at 2!", error: err}))
+}
