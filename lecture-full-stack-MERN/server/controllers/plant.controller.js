@@ -19,3 +19,24 @@ module.exports.createPlant = (req, res) => {
         .then(newPlant => res.json({plant: newPlant}))
         .catch(err => res.status(400).json(err));
 }
+
+module.exports.deletePlant = (req, res) => {
+    Plant.remove({_id: req.params._id})
+        .then(plant => {
+            console.log(plant);
+            res.json({message: "Delete Successful"})
+        })
+        .catch(err => res.status(400).json(err))
+}
+
+module.exports.updatePlant = (req, res) => {
+    Plant.update({_id: req.params._id}, {
+        $set: {
+            name: req.body.name,
+            type: req.body.type,
+            color: req.body.color
+        }
+    })
+    .then(plant => res.json(plant))
+    .catch(err => res.status(400).json(err));
+}

@@ -15,7 +15,7 @@ const Main = (props) => {
     return(
         <div>
             <h1>Here's all my lovely plants</h1>
-            <ul>
+            <ul style={{"listStyleType":"none"}}>
                 {
                     plants.map((plant, i) => {
                         return <li key={i}>{plant.name}</li>
